@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Chat App</string>
+
+    <string name="login_title">Login</string>
+
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="invalid_username">Username invalid</string>
+    <string name="invalid_password">Password invalid</string>
+
+    <string name="tag_login_feature">Login</string>
+
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_sign_in_short">Sign In</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+</resources>
