@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
  *
  */
 public class ClientError {
-
     private String error;
 
     public ClientError(@NonNull String error) {

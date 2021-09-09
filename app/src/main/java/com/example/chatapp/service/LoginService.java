@@ -19,7 +19,6 @@ import java.io.IOException;
  *
  */
 public class LoginService extends APIService {
-
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private static final String LOGIN_URL = BuildConfig.LOGIN_URL;

@@ -52,9 +52,8 @@ public class LoginFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.login_fragment, container, false);
     }
@@ -167,6 +166,11 @@ public class LoginFragment extends BaseFragment {
         return text.getText().toString();
     }
 
+    @Nullable
+    private LoginFragment getFragment() {
+        return this;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -197,10 +201,5 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-    }
-
-    @Nullable
-    private LoginFragment getFragment() {
-        return this;
     }
 }

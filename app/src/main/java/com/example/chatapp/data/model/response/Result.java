@@ -8,11 +8,9 @@ import androidx.annotation.NonNull;
  */
 
 public class Result<T> {
-
     public Result() {}
 
     public final static class Success<T> extends Result {
-
         private T data;
 
         public Success(@NonNull T data) {
@@ -27,7 +25,6 @@ public class Result<T> {
 
 
     public final static class Failure<T> extends Result {
-
         private T error;
 
         public Failure(@NonNull T error) {
@@ -41,7 +38,6 @@ public class Result<T> {
     }
 
     public final static class Error extends Result {
-
         private Exception error;
 
         public Error(@NonNull Exception error) {

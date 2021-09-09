@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
  *
  */
 public class Token {
-
     private String token;
 
     public Token(@NonNull String token) {

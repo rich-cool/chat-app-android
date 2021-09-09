@@ -9,8 +9,6 @@ import org.json.JSONObject;
 
 public class UserCredentialsSerializer implements Serializer<UserCredentials> {
 
-    private static final String TAG = UserCredentialsSerializer.class.getName();
-
     public UserCredentialsSerializer() {}
 
     @NonNull

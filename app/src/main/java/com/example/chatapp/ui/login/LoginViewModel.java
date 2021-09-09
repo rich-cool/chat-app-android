@@ -16,7 +16,6 @@ import com.example.chatapp.LoginRepository;
 import com.example.chatapp.util.Constants;
 
 public class LoginViewModel extends ViewModel {
-
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private LoginRepository repo;

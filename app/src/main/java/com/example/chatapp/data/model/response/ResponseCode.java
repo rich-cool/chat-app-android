@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
  *
  */
 public class ResponseCode {
-
     private String code;
 
     public final static String ERROR             = "-1000";

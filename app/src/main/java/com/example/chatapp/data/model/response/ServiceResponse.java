@@ -17,7 +17,6 @@ import org.json.JSONObject;
  *
  */
 public class ServiceResponse {
-
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private Pair<ResponseCode, JSONObject> response;

@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
  *
  */
 public class UserCredentials {
-
     private String username;
     private String password;
 
