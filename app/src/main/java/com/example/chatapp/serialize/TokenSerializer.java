@@ -13,7 +13,6 @@ public class TokenSerializer implements Serializer<Token> {
     @NonNull
     public JSONObject toJSON(@NonNull Token token) {
         JSONObject object = new JSONObject();
-
         try {
             object.put("token", token.toString());
         }
