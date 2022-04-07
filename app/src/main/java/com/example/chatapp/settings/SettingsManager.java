@@ -10,7 +10,6 @@ import com.example.chatapp.data.model.Token;
 
 public class SettingsManager {
     private static volatile SettingsManager instance;
-
     private static final Object lock = new Object();
 
     private SettingsManager() {}
