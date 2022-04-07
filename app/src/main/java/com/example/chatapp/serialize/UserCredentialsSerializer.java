@@ -8,13 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserCredentialsSerializer implements Serializer<UserCredentials> {
-
     public UserCredentialsSerializer() {}
 
     @NonNull
     public JSONObject toJSON(@NonNull UserCredentials credentials) {
         JSONObject object = new JSONObject();
-
         try {
             // Backend only accepts email for now
             object.put("email", credentials.getUsername());
