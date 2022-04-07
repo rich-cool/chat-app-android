@@ -31,7 +31,6 @@ import com.example.chatapp.util.Constants;
 import com.example.chatapp.util.Logger;
 
 public class LoginFragment extends BaseFragment {
-
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private LoginViewModel loginViewModel;
