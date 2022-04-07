@@ -8,13 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ClientErrorSerializer implements Serializer<ClientError> {
-
     public ClientErrorSerializer() {}
 
     @NonNull
     public JSONObject toJSON(@NonNull ClientError error) {
         JSONObject object = new JSONObject();
-
         try {
             object.put("error", error.toString());
         }
