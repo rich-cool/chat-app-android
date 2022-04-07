@@ -7,7 +7,6 @@ import org.json.JSONObject;
  * @param <T> type to be serialized
  */
 public interface Serializer<T> {
-
     JSONObject toJSON(T data);
 
     T fromJSON(JSONObject json);
