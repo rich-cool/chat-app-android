@@ -18,7 +18,6 @@ import org.json.JSONObject;
  */
 public class ServiceResponse {
     private static final String TAG = Constants.LOGIN_FEATURE;
-
     private Pair<ResponseCode, JSONObject> response;
 
     public ServiceResponse(@NonNull Pair<ResponseCode, JSONObject> response) {
@@ -44,11 +43,9 @@ public class ServiceResponse {
     @NonNull
     public <T> T getData(Serializer s) {
         T data = (T) s.fromJSON(getJSON());
-
         if (data != null) {
             return data;
         }
-
         // Incompatible serializer or JSON error
         Logger.e(TAG, "Error parsing data");
         return null;
