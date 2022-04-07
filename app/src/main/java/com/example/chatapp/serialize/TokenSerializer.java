@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TokenSerializer implements Serializer<Token> {
-
     public TokenSerializer() {}
 
     @NonNull
