@@ -61,7 +61,6 @@ public class LoginRepository {
     private Result getLoginResult(@NonNull ServiceResponse response) {
         if (response.successCode()) {
             Token token = response.getData(new TokenSerializer());
-
             if (token != null) {
                 Logger.d(TAG, "Result success");
                 return new Result.Success<>(token);
@@ -70,7 +69,6 @@ public class LoginRepository {
         }
         else if (response.errorCode()) {
             ClientError error = new ClientError(response.getData(new ClientErrorSerializer()));
-
             if (error != null) {
                 Logger.d(TAG, "Result failure");
                 return new Result.Failure<>(error);
