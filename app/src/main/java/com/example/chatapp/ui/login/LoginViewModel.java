@@ -19,7 +19,6 @@ public class LoginViewModel extends ViewModel {
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private LoginRepository repo;
-
     private static MutableLiveData<Result> loginResult = new MutableLiveData<>();
 
     private Handler loginHandler;
@@ -51,7 +50,6 @@ public class LoginViewModel extends ViewModel {
     public boolean usernameIsValid(@Nullable String username) {
         if (username == null)
             return false;
-
         if (!(username.contains("@"))) {
             return false;
         }
