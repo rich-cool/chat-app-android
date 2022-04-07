@@ -36,9 +36,8 @@ import okhttp3.Response;
  */
 public abstract class APIService {
     private static final String TAG = Constants.LOGIN_FEATURE;
-
+    
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
     private Response httpResponse;
 
     private enum Method {
