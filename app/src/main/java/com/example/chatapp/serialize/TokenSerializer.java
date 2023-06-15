@@ -9,7 +9,9 @@ import org.json.JSONObject;
 
 public class TokenSerializer implements Serializer<Token> {
 
-    public TokenSerializer() {}
+    public TokenSerializer() {
+
+    }
 
     @NonNull
     public JSONObject toJSON(@NonNull Token token) {
@@ -17,10 +19,10 @@ public class TokenSerializer implements Serializer<Token> {
 
         try {
             object.put("token", token.toString());
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return object;
     }
 
@@ -29,10 +31,10 @@ public class TokenSerializer implements Serializer<Token> {
         try {
             String token = (String) json.get("token");
             return new Token(token);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

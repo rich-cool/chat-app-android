@@ -9,6 +9,5 @@ import org.json.JSONObject;
 public interface Serializer<T> {
 
     JSONObject toJSON(T data);
-
     T fromJSON(JSONObject json);
 }

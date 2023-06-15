@@ -9,7 +9,9 @@ import org.json.JSONObject;
 
 public class ClientErrorSerializer implements Serializer<ClientError> {
 
-    public ClientErrorSerializer() {}
+    public ClientErrorSerializer() {
+
+    }
 
     @NonNull
     public JSONObject toJSON(@NonNull ClientError error) {
@@ -17,10 +19,10 @@ public class ClientErrorSerializer implements Serializer<ClientError> {
 
         try {
             object.put("error", error.toString());
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return object;
     }
 
@@ -29,10 +31,10 @@ public class ClientErrorSerializer implements Serializer<ClientError> {
         try {
             String error = (String) json.get("error");
             return new ClientError(error);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

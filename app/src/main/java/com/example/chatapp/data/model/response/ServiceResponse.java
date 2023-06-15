@@ -14,9 +14,9 @@ import org.json.JSONObject;
 
 /**
  * Holds response code and json data
- *
  */
 public class ServiceResponse {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private Pair<ResponseCode, JSONObject> response;
@@ -38,7 +38,6 @@ public class ServiceResponse {
     /**
      * @param s type of {@link Serializer} compatible with T
      * @param <T> type of data to be returned by {@link Serializer}
-     *
      */
     @SuppressWarnings("unchecked")
     @NonNull
@@ -56,14 +55,15 @@ public class ServiceResponse {
 
     /**
      * Returns type of response error (currently only {@link ClientError})
-     *
      */
     @NonNull
     public ClientError getError() {
         if (getResponseCode().getCodeType() == getResponseCode().CLIENT_ERROR_CODE) {
             return new ClientError(getData(new ClientErrorSerializer()));
+        } else {
+
         }
-        else {}
+
         return new ClientError(getData(new ClientErrorSerializer()));
     }
 
@@ -71,6 +71,7 @@ public class ServiceResponse {
         if (getResponseCode().getCodeType() == getResponseCode().SUCCESS_CODE) {
             return true;
         }
+
         return false;
     }
 
@@ -79,6 +80,7 @@ public class ServiceResponse {
         if (getResponseCode().getCodeType() == getResponseCode().CLIENT_ERROR_CODE) {
             return true;
         }
+
         return false;
     }
 

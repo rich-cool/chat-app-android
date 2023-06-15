@@ -17,14 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        /** Start {@link LoginActivity} if user not authenticated
-         *
+        /**
+         * Start {@link LoginActivity} if user not authenticated
          */
         if (!(userIsAuthenticated())) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
-
         // TODO: MainActivity
     }
 
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         if (SettingsManager.getInstance().isAuthenticated(this)) {
             return true;
         }
+
         return false;
     }
 }

@@ -16,18 +16,19 @@ import java.io.IOException;
 
 /**
  * Communicate with login api endpoint
- *
  */
 public class LoginService extends APIService {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private static final String LOGIN_URL = BuildConfig.LOGIN_URL;
 
+    private static final Object lock = new Object();
     private static volatile LoginService instance;
 
-    private static final Object lock = new Object();
+    private LoginService() {
 
-    private LoginService() {}
+    }
 
     public static LoginService getInstance() {
         if (instance == null) {
@@ -37,6 +38,7 @@ public class LoginService extends APIService {
                 }
             }
         }
+
         return instance;
     }
 
@@ -44,11 +46,11 @@ public class LoginService extends APIService {
         try {
             ServiceResponse response = post(LOGIN_URL, json);
             return response;
-        }
-        catch (IOException | InterruptedException | JSONException e) {
+        } catch (IOException | InterruptedException | JSONException e) {
             e.printStackTrace();
             Logger.e(TAG, "Error requesting data");
         }
+
         return new ServiceResponse(new Pair<>(new ResponseCode(-1000), new JSONObject()));
     }
 }

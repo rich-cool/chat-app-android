@@ -32,13 +32,12 @@ import okhttp3.Response;
 
 /**
  * Provides methods for communicating with api endpoints
- *
  */
 public abstract class APIService {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
     private Response httpResponse;
 
     private enum Method {
@@ -62,8 +61,7 @@ public abstract class APIService {
     }
 
     @NonNull
-    protected ServiceResponse post(
-            @NonNull String url, @NonNull JSONObject json,
+    protected ServiceResponse post(@NonNull String url, @NonNull JSONObject json,
             @Nullable Map<String, String> header)
             throws IOException, InterruptedException, JSONException {
         postCall(url, json, header);
@@ -72,20 +70,18 @@ public abstract class APIService {
             return new ServiceResponse(new Pair<>(new ResponseCode(httpResponse.code()),
                     new JSONObject(httpResponse.body().string())));
         }
+
         return new ServiceResponse(new Pair<>(new ResponseCode(-1000),
                 new JSONObject()));
     }
 
-    private void postCall(
-            @NonNull String url, @NonNull JSONObject json,
+    private void postCall(@NonNull String url, @NonNull JSONObject json,
             @Nullable Map<String, String> header)
             throws IOException, InterruptedException, JSONException {
         call(url, json, header, Method.POST);
     }
 
-    private void getCall(
-            @NonNull String url, @Nullable Map<String,
-            String> header)
+    private void getCall(@NonNull String url, @Nullable Map<String, String> header)
             throws IOException, InterruptedException, JSONException {
         call(url, null, header, Method.GET);
     }
@@ -95,8 +91,7 @@ public abstract class APIService {
      * @param json optional argument used to populate request body
      * @param header optional headers
      */
-    private void call(
-            @NonNull String url, @Nullable JSONObject json,
+    private void call(@NonNull String url, @Nullable JSONObject json,
             @Nullable Map<String, String> header, @NonNull Method method)
             throws IOException, InterruptedException, JSONException {
         OkHttpClient client = new OkHttpClient.Builder()
@@ -112,8 +107,7 @@ public abstract class APIService {
         if (method == Method.POST) {
             RequestBody body = addBody(json);
             builder.post(body);
-        }
-        else if (method == Method.GET) {
+        } else if (method == Method.GET) {
             builder.get();
         }
 
@@ -155,6 +149,7 @@ public abstract class APIService {
             String key = keys.next();
             builder.add(key.toString(), (String) json.get(key));
         }
+
         RequestBody body = builder.build();
         return body;
     }

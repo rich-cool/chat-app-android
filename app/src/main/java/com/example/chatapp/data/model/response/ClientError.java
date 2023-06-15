@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 
 /**
  * Holds client error response
- *
  */
 public class ClientError {
+
     private String error;
 
     public ClientError(@NonNull String error) {

@@ -19,7 +19,6 @@ import java.io.IOException;
 
 /**
  * Gets login response from login data source
- *
  */
 public class LoginRepository {
     private static final String TAG = Constants.LOGIN_FEATURE;
@@ -41,8 +40,7 @@ public class LoginRepository {
                 return getLoginResult(response);
             }
             return new Result.Error(new IOException(" Error parsing data"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new Result.Error(new IOException(" Unexpected error: ", e));
         }
@@ -55,7 +53,6 @@ public class LoginRepository {
     /**
      * @param response login service response
      * @return the correct result type of the response
-     *
      */
     @NonNull
     private Result getLoginResult(@NonNull ServiceResponse response) {
@@ -66,9 +63,9 @@ public class LoginRepository {
                 Logger.d(TAG, "Result success");
                 return new Result.Success<>(token);
             }
+
             return new Result.Error(new IOException(" Error parsing response data"));
-        }
-        else if (response.errorCode()) {
+        } else if (response.errorCode()) {
             ClientError error = new ClientError(response.getData(new ClientErrorSerializer()));
 
             if (error != null) {
@@ -76,6 +73,7 @@ public class LoginRepository {
                 return new Result.Failure<>(error);
             }
         }
+        
         return new Result.Error(new IOException(" Error parsing response error data"));
     }
 }
