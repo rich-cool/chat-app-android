@@ -37,7 +37,7 @@ public class LoginViewModel extends ViewModel {
         Runnable loginRunnable = new Runnable() {
                 @Override
                 public void run() {
-                    loginResult.setValue(repo.login(credentials));
+                    loginResult.postValue(repo.login(credentials));
                 }
         };
         loginHandler.postDelayed(loginRunnable, 1000);
