@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.chatapp.R;
 
 public final class Logger {
+
     private static final String TAG_PREFIX = Constants.APP_NAME_SHORT + ".";
 
     public Logger() {}
