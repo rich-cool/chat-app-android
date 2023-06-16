@@ -1,4 +1,4 @@
-BASE_URL="http://192.34.57.201:8000"
-API_URL="http://192.34.57.201:8000/api/"
-LOGIN_URL="http://192.34.57.201:8000/api/login/"
-SIGN_UP_URL="http://192.34.57.201:8000/api/sign-up/"
+BASE_URL="http://10.0.0.173:8000"
+API_URL="http://10.0.0.173:8000/api/"
+LOGIN_URL="http://10.0.0.173:8000/api/login/"
+SIGN_UP_URL="http://10.0.0.173:8000/api/sign-up/"
