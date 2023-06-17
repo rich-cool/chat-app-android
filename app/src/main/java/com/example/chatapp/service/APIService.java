@@ -33,7 +33,7 @@ import okhttp3.Response;
 /**
  * Provides methods for communicating with api endpoints
  */
-public abstract class APIService {
+public class APIService {
 
     private static final String TAG = Constants.LOGIN_FEATURE;
 
@@ -46,22 +46,19 @@ public abstract class APIService {
     }
 
     @NonNull
-    public abstract ServiceResponse login(@NonNull JSONObject json);
-
-    @NonNull
-    protected ServiceResponse get(@NonNull String url, @NonNull JSONObject json) {
+    public ServiceResponse get(@NonNull String url, @NonNull JSONObject json) {
         // TODO: OkHttp get
         return new ServiceResponse(new Pair<>(new ResponseCode(200), new JSONObject()));
     }
 
     @NonNull
-    protected ServiceResponse post(@NonNull String url, @NonNull JSONObject json)
+    public ServiceResponse post(@NonNull String url, @NonNull JSONObject json)
             throws IOException, InterruptedException, JSONException {
         return post(url, json, null);
     }
 
     @NonNull
-    protected ServiceResponse post(@NonNull String url, @NonNull JSONObject json,
+    public ServiceResponse post(@NonNull String url, @NonNull JSONObject json,
             @Nullable Map<String, String> header)
             throws IOException, InterruptedException, JSONException {
         postCall(url, json, header);
@@ -107,7 +104,7 @@ public abstract class APIService {
         if (method == Method.POST) {
             RequestBody body = addBody(json);
             builder.post(body);
-        } else if (method == Method.GET) {
+        } else {
             builder.get();
         }
 
@@ -137,7 +134,6 @@ public abstract class APIService {
     /**
      * Adds json data to request body
      * @param json used to populate request body
-     *
      */
     @NonNull
     private RequestBody addBody(@NonNull JSONObject json) throws JSONException {

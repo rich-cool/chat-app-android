@@ -21,12 +21,11 @@ import java.io.IOException;
  * Gets login response from login data source
  */
 public class LoginRepository {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
-    private LoginDataSource dataSource;
+    public LoginRepository() {
 
-    public LoginRepository(LoginDataSource dataSource) {
-        this.dataSource = dataSource;
     }
 
     @NonNull
@@ -36,7 +35,7 @@ public class LoginRepository {
             JSONObject jsonCredentials = serializer.toJSON(credentials);
 
             if (jsonCredentials != null) {
-                ServiceResponse response = dataSource.login(jsonCredentials);
+                ServiceResponse response = LoginDataSource.getInstance().login(jsonCredentials);
                 return getLoginResult(response);
             }
             return new Result.Error(new IOException(" Error parsing data"));
@@ -73,7 +72,7 @@ public class LoginRepository {
                 return new Result.Failure<>(error);
             }
         }
-        
+
         return new Result.Error(new IOException(" Error parsing response error data"));
     }
 }
