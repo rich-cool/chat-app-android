@@ -11,9 +11,12 @@ import com.example.chatapp.util.Constants;
 import com.example.chatapp.util.Logger;
 
 public abstract class BaseFragment extends Fragment {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
-    public BaseFragment() {}
+    public BaseFragment() {
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

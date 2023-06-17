@@ -35,7 +35,9 @@ public class LoginFragment extends BaseFragment {
 
     private LoginViewModel loginViewModel;
 
-    public LoginFragment() {}
+    public LoginFragment() {
+
+    }
 
     /**
      * Create new instance of this fragment.
@@ -63,15 +65,15 @@ public class LoginFragment extends BaseFragment {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final Button loginButton           = view.findViewById(R.id.sign_in_button);
-        final EditText usernameText        = view.findViewById(R.id.username);
-        final EditText passwordText        = view.findViewById(R.id.password);
+        final EditText usernameText = view.findViewById(R.id.username);
+        final EditText passwordText = view.findViewById(R.id.password);
+        final Button loginButton = view.findViewById(R.id.sign_in_button);
         final ProgressBar loginProgressBar = view.findViewById(R.id.progressBar);
 
         loginViewModel.getLoginResult().observe(getViewLifecycleOwner(), new Observer<Result>() {
             @Override
             public void onChanged(Result result) {
-                if (loginViewModel.getLoginResult().getValue() instanceof Result.Success) {
+                if (result instanceof Result.Success) {
                     Token token = (Token) ((Result.Success) loginViewModel.getLoginResult().getValue()).getData();
 
                     SettingsManager.getInstance().storeAuthToken(token, getContext());
@@ -81,14 +83,12 @@ public class LoginFragment extends BaseFragment {
 
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     getActivity().startActivity(intent);
-                }
-                else if (loginViewModel.getLoginResult().getValue() instanceof Result.Failure) {
+                } else if (result instanceof Result.Failure) {
                     ClientError error = (ClientError) ((Result.Failure) loginViewModel.getLoginResult().getValue()).getError();
 
                     loginProgressBar.setVisibility(View.GONE);
                     loginButton.setEnabled(true);
-                }
-                else if (loginViewModel.getLoginResult().getValue() instanceof Result.Error) {
+                } else if (result instanceof Result.Error) {
                     loginProgressBar.setVisibility(View.GONE);
                     loginButton.setEnabled(true);
                 }
@@ -106,18 +106,21 @@ public class LoginFragment extends BaseFragment {
 
         usernameText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (loginViewModel.credentialsIsValid(getText(usernameText),
                         getText(passwordText))) {
                     loginButton.setEnabled(true);
-                }
-                else if (!(loginViewModel.usernameIsValid(getText(usernameText)))) {
+                } else if (!(loginViewModel.usernameIsValid(getText(usernameText)))) {
                     usernameText.setError(getString(R.string.invalid_username));
                     loginButton.setEnabled(false);
                 }
@@ -126,18 +129,21 @@ public class LoginFragment extends BaseFragment {
 
         passwordText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (loginViewModel.credentialsIsValid(getText(usernameText),
                         getText(passwordText))) {
                     loginButton.setEnabled(true);
-                }
-                else if (!(loginViewModel.passwordIsValid(getText(passwordText)))) {
+                } else if (!(loginViewModel.passwordIsValid(getText(passwordText)))) {
                     passwordText.setError(getString(R.string.invalid_password));
                     loginButton.setEnabled(false);
                 }
@@ -154,6 +160,7 @@ public class LoginFragment extends BaseFragment {
                     loginProgressBar.setVisibility(View.VISIBLE);
                     loginButton.setEnabled(false);
                 }
+
                 return false;
             }
         });
@@ -193,7 +200,6 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         // TODO: Remove LoginViewModel handler callbacks
-
         super.onDestroy();
     }
 

@@ -16,6 +16,7 @@ import com.example.chatapp.LoginRepository;
 import com.example.chatapp.util.Constants;
 
 public class LoginViewModel extends ViewModel {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private LoginRepository repo;
@@ -35,10 +36,9 @@ public class LoginViewModel extends ViewModel {
         Runnable loginRunnable = new Runnable() {
                 @Override
                 public void run() {
-                    loginResult.setValue(repo.login(credentials));
+                    loginResult.postValue(repo.login(credentials));
                 }
         };
-
         loginHandler.postDelayed(loginRunnable, 1000);
     }
 
@@ -53,6 +53,7 @@ public class LoginViewModel extends ViewModel {
         if (!(username.contains("@"))) {
             return false;
         }
+
         return Patterns.EMAIL_ADDRESS.matcher(username).matches();
     }
 

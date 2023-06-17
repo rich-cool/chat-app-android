@@ -2,11 +2,13 @@ package com.example.chatapp.data.model.response;
 
 import androidx.annotation.NonNull;
 
+import com.example.chatapp.serialize.JSONSerializable;
+
 /**
  * Holds client error response
- *
  */
-public class ClientError {
+public class ClientError extends JSONSerializable {
+
     private String error;
 
     public ClientError(@NonNull String error) {

@@ -7,8 +7,11 @@ import com.example.chatapp.data.model.UserCredentials;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UserCredentialsSerializer implements Serializer<UserCredentials> {
-    public UserCredentialsSerializer() {}
+public class UserCredentialsSerializer extends JSONSerializer<UserCredentials> {
+
+    public UserCredentialsSerializer() {
+
+    }
 
     @NonNull
     public JSONObject toJSON(@NonNull UserCredentials credentials) {
@@ -18,10 +21,10 @@ public class UserCredentialsSerializer implements Serializer<UserCredentials> {
             object.put("email", credentials.getUsername());
             object.put("password", credentials.getPassword());
             return object;
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -31,10 +34,10 @@ public class UserCredentialsSerializer implements Serializer<UserCredentials> {
             String username = (String) json.get("email");
             String password = (String) json.get("password");
             return new UserCredentials(username, password);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 

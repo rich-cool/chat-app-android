@@ -17,9 +17,8 @@ public class LoginViewModelFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(LoginViewModel.class)) {
-            return (T) new LoginViewModel(new LoginRepository((new LoginDataSource())));
-        }
-        else {
+            return (T) new LoginViewModel(new LoginRepository());
+        } else {
             throw new IllegalArgumentException("Unknown ViewModel class");
         }
     }

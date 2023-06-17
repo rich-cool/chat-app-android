@@ -2,11 +2,14 @@ package com.example.chatapp.data.model;
 
 import androidx.annotation.NonNull;
 
+import com.example.chatapp.serialize.JSONSerializable;
+
 /**
  * Stores JWT received from LoginService
  *
  */
-public class Token {
+public class Token extends JSONSerializable {
+
     private String token;
 
     public Token(@NonNull String token) {

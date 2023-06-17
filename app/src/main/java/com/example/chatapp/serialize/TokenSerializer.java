@@ -7,18 +7,21 @@ import com.example.chatapp.data.model.Token;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TokenSerializer implements Serializer<Token> {
-    public TokenSerializer() {}
+public class TokenSerializer extends JSONSerializer<Token> {
+
+    public TokenSerializer() {
+
+    }
 
     @NonNull
     public JSONObject toJSON(@NonNull Token token) {
         JSONObject object = new JSONObject();
         try {
             object.put("token", token.toString());
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return object;
     }
 
@@ -27,10 +30,10 @@ public class TokenSerializer implements Serializer<Token> {
         try {
             String token = (String) json.get("token");
             return new Token(token);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }

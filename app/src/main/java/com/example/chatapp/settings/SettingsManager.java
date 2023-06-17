@@ -9,10 +9,17 @@ import androidx.annotation.Nullable;
 import com.example.chatapp.data.model.Token;
 
 public class SettingsManager {
+<<<<<<< HEAD
     private static volatile SettingsManager instance;
-    private static final Object lock = new Object();
+=======
 
-    private SettingsManager() {}
+>>>>>>> 0.2.0
+    private static final Object lock = new Object();
+    private static volatile SettingsManager instance;
+
+    private SettingsManager() {
+
+    }
 
     @NonNull
     public static SettingsManager getInstance() {
@@ -23,6 +30,7 @@ public class SettingsManager {
                 }
             }
         }
+
         return instance;
     }
 
@@ -31,6 +39,7 @@ public class SettingsManager {
         if (context != null) {
             return context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
         }
+
         return null;
     }
 
@@ -44,24 +53,24 @@ public class SettingsManager {
     @Nullable
     public Token getAuthToken(@Nullable Context context) {
         SharedPreferences prefs = getPrefs(context);
-
         String token = prefs.getString("token", null);
 
         if (token != null) {
             return new Token(token);
         }
+
         return null;
     }
 
     @NonNull
     public boolean isAuthenticated(@Nullable Context context) {
         SharedPreferences prefs = getPrefs(context);
-
         String token = prefs.getString("token", null);
 
         if (token != null) {
             return true;
         }
+
         return false;
     }
 }

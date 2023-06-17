@@ -19,15 +19,13 @@ import java.io.IOException;
 
 /**
  * Gets login response from login data source
- *
  */
 public class LoginRepository {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
-    private LoginDataSource dataSource;
+    public LoginRepository() {
 
-    public LoginRepository(LoginDataSource dataSource) {
-        this.dataSource = dataSource;
     }
 
     @NonNull
@@ -37,12 +35,11 @@ public class LoginRepository {
             JSONObject jsonCredentials = serializer.toJSON(credentials);
 
             if (jsonCredentials != null) {
-                ServiceResponse response = dataSource.login(jsonCredentials);
+                ServiceResponse response = LoginDataSource.getInstance().login(jsonCredentials);
                 return getLoginResult(response);
             }
             return new Result.Error(new IOException(" Error parsing data"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new Result.Error(new IOException(" Unexpected error: ", e));
         }
@@ -54,26 +51,28 @@ public class LoginRepository {
 
     /**
      * @param response login service response
-     * @return the correct result type of the response
-     *
+     * @return the result type of the response
      */
     @NonNull
     private Result getLoginResult(@NonNull ServiceResponse response) {
         if (response.successCode()) {
-            Token token = response.getData(new TokenSerializer());
+            Token token = (Token) response.getData(new TokenSerializer());
+
             if (token != null) {
                 Logger.d(TAG, "Result success");
                 return new Result.Success<>(token);
             }
+
             return new Result.Error(new IOException(" Error parsing response data"));
-        }
-        else if (response.errorCode()) {
-            ClientError error = new ClientError(response.getData(new ClientErrorSerializer()));
+        } else if (response.errorCode()) {
+            ClientError error = (ClientError) response.getData(new ClientErrorSerializer());
+
             if (error != null) {
                 Logger.d(TAG, "Result failure");
                 return new Result.Failure<>(error);
             }
         }
+
         return new Result.Error(new IOException(" Error parsing response error data"));
     }
 }

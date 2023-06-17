@@ -6,8 +6,8 @@ import org.json.JSONObject;
  * Methods for handling <T> and JSON bi-directional relationship
  * @param <T> type to be serialized
  */
-public interface Serializer<T> {
-    JSONObject toJSON(T data);
+public abstract class JSONSerializer<T> {
 
-    T fromJSON(JSONObject json);
+    public abstract JSONObject toJSON(T data);
+    public abstract T fromJSON(JSONObject json);
 }

@@ -7,18 +7,22 @@ import com.example.chatapp.data.model.response.ClientError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ClientErrorSerializer implements Serializer<ClientError> {
-    public ClientErrorSerializer() {}
+public class ClientErrorSerializer extends JSONSerializer<ClientError> {
+
+    public ClientErrorSerializer() {
+
+    }
 
     @NonNull
     public JSONObject toJSON(@NonNull ClientError error) {
         JSONObject object = new JSONObject();
+
         try {
             object.put("error", error.toString());
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return object;
     }
 
@@ -27,10 +31,10 @@ public class ClientErrorSerializer implements Serializer<ClientError> {
         try {
             String error = (String) json.get("error");
             return new ClientError(error);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }
