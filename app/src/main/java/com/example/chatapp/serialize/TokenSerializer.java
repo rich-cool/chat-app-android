@@ -8,13 +8,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TokenSerializer implements Serializer<Token> {
-
     public TokenSerializer() {}
 
     @NonNull
     public JSONObject toJSON(@NonNull Token token) {
         JSONObject object = new JSONObject();
-
         try {
             object.put("token", token.toString());
         }
