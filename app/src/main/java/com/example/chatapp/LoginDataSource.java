@@ -55,8 +55,8 @@ public class LoginDataSource {
 
     /**
      * @return {@link Result.Success} containing JWT if login successful,
-     * {@link Result.Error} containing error data if login unsuccessful, or
-     * {@link Result.Failure} containing exception.
+     * {@link Result.Failure} containing error data if login unsuccessful, or
+     * {@link Result.Error} containing exception.
      */
     @NonNull
     public ServiceResponse login(@NonNull JSONObject jsonCredentials) {

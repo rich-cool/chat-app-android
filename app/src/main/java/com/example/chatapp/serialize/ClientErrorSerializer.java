@@ -7,7 +7,7 @@ import com.example.chatapp.data.model.response.ClientError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ClientErrorSerializer implements Serializer<ClientError> {
+public class ClientErrorSerializer extends JSONSerializer<ClientError> {
 
     public ClientErrorSerializer() {
 

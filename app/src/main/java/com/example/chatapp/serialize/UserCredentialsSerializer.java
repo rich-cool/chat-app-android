@@ -7,7 +7,7 @@ import com.example.chatapp.data.model.UserCredentials;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UserCredentialsSerializer implements Serializer<UserCredentials> {
+public class UserCredentialsSerializer extends JSONSerializer<UserCredentials> {
 
     public UserCredentialsSerializer() {
 

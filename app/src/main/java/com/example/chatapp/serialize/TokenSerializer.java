@@ -7,7 +7,7 @@ import com.example.chatapp.data.model.Token;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TokenSerializer implements Serializer<Token> {
+public class TokenSerializer extends JSONSerializer<Token> {
 
     public TokenSerializer() {
 

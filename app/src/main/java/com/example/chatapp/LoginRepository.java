@@ -51,12 +51,12 @@ public class LoginRepository {
 
     /**
      * @param response login service response
-     * @return the correct result type of the response
+     * @return the result type of the response
      */
     @NonNull
     private Result getLoginResult(@NonNull ServiceResponse response) {
         if (response.successCode()) {
-            Token token = response.getData(new TokenSerializer());
+            Token token = (Token) response.getData(new TokenSerializer());
 
             if (token != null) {
                 Logger.d(TAG, "Result success");
@@ -65,7 +65,7 @@ public class LoginRepository {
 
             return new Result.Error(new IOException(" Error parsing response data"));
         } else if (response.errorCode()) {
-            ClientError error = new ClientError(response.getData(new ClientErrorSerializer()));
+            ClientError error = (ClientError) response.getData(new ClientErrorSerializer());
 
             if (error != null) {
                 Logger.d(TAG, "Result failure");

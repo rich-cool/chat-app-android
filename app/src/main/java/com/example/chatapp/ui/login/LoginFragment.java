@@ -74,7 +74,7 @@ public class LoginFragment extends BaseFragment {
         loginViewModel.getLoginResult().observe(getViewLifecycleOwner(), new Observer<Result>() {
             @Override
             public void onChanged(Result result) {
-                if (loginViewModel.getLoginResult().getValue() instanceof Result.Success) {
+                if (result instanceof Result.Success) {
                     Token token = (Token) ((Result.Success) loginViewModel.getLoginResult().getValue()).getData();
 
                     SettingsManager.getInstance().storeAuthToken(token, getContext());
@@ -84,12 +84,12 @@ public class LoginFragment extends BaseFragment {
 
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     getActivity().startActivity(intent);
-                } else if (loginViewModel.getLoginResult().getValue() instanceof Result.Failure) {
+                } else if (result instanceof Result.Failure) {
                     ClientError error = (ClientError) ((Result.Failure) loginViewModel.getLoginResult().getValue()).getError();
 
                     loginProgressBar.setVisibility(View.GONE);
                     loginButton.setEnabled(true);
-                } else if (loginViewModel.getLoginResult().getValue() instanceof Result.Error) {
+                } else if (result instanceof Result.Error) {
                     loginProgressBar.setVisibility(View.GONE);
                     loginButton.setEnabled(true);
                 }
