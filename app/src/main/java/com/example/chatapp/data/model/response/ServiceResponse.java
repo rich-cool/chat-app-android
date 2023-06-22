@@ -44,13 +44,12 @@ public class ServiceResponse {
     public JSONSerializable getData(JSONSerializer s) {
         JSONSerializable data = (JSONSerializable) s.fromJSON(getJSON());
 
-        if (data != null) {
-            return data;
+        if (data == null) {
+            // Incompatible serializer or JSON error
+            Logger.e(TAG, "Error parsing data");
         }
 
-        // Incompatible serializer or JSON error
-        Logger.e(TAG, "Error parsing data");
-        return null;
+        return data;
     }
 
     /**

@@ -50,6 +50,7 @@ public class LoginViewModel extends ViewModel {
     public boolean usernameIsValid(@Nullable String username) {
         if (username == null)
             return false;
+
         if (!(username.contains("@"))) {
             return false;
         }

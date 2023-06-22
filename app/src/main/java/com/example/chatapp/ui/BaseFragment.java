@@ -12,10 +12,10 @@ import com.example.chatapp.util.Logger;
 
 public abstract class BaseFragment extends Fragment {
 
-    private static final String TAG = Constants.LOGIN_FEATURE;
+    private final String TAG;
 
-    public BaseFragment() {
-
+    public BaseFragment(String tag) {
+        this.TAG = tag;
     }
 
     @Override

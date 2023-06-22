@@ -6,7 +6,6 @@ import com.example.chatapp.serialize.JSONSerializable;
 
 /**
  * Stores JWT received from LoginService
- *
  */
 public class Token extends JSONSerializable {
 

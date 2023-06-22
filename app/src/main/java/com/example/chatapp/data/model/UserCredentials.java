@@ -6,7 +6,6 @@ import com.example.chatapp.serialize.JSONSerializable;
 
 /**
  * Stores user login credentials
- *
  */
 public class UserCredentials extends JSONSerializable {
 

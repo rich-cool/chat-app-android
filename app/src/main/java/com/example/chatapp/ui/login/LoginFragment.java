@@ -31,12 +31,13 @@ import com.example.chatapp.util.Constants;
 import com.example.chatapp.util.Logger;
 
 public class LoginFragment extends BaseFragment {
+
     private static final String TAG = Constants.LOGIN_FEATURE;
 
     private LoginViewModel loginViewModel;
 
     public LoginFragment() {
-
+        super(TAG);
     }
 
     /**
@@ -98,9 +99,9 @@ public class LoginFragment extends BaseFragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginViewModel.login(getText(usernameText), getText(passwordText));
-                loginProgressBar.setVisibility(View.VISIBLE);
                 loginButton.setEnabled(false);
+                loginProgressBar.setVisibility(View.VISIBLE);
+                loginViewModel.login(getText(usernameText), getText(passwordText));
             }
         });
 

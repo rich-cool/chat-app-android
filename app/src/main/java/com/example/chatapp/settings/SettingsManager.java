@@ -9,11 +9,7 @@ import androidx.annotation.Nullable;
 import com.example.chatapp.data.model.Token;
 
 public class SettingsManager {
-<<<<<<< HEAD
-    private static volatile SettingsManager instance;
-=======
 
->>>>>>> 0.2.0
     private static final Object lock = new Object();
     private static volatile SettingsManager instance;
 
