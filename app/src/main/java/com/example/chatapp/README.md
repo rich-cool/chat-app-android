@@ -1,8 +1,11 @@
 
-Chatapp
+chatapp/ (Directory)
 ================
 
 ## For Reference:
+
+* *LoginDataSource* [(LoginDataSource.java)](LoginDataSource.java)
+* *LoginRepository* [(LoginRepository.java)](LoginRepository.java)
 
 ### data/model [(data/model)](data/model)
 
@@ -10,21 +13,21 @@ Chatapp
    * *ClientError* [(ClientError.java)](data/model/response/ClientError.java)
    * *ResponseCode* [(ResponseCode.java)](data/model/response/ResponseCode.java)
    * *Result* [(Result.java)](data/model/response/Result.java)
-   * *ServiceResponse* [(ServiceRespose.java)](data/model/response/ServiceResponse.java)
+   * *ServiceResponse* [(ServiceResponse.java)](data/model/response/ServiceResponse.java)
 * *Token* [(Token.java)](data/model/Token.java)
 * *UserCredentials* [(UserCredentials.java)](data/model/UserCredentials.java)
 
 ### serialize [(serialize)](serialize)
 
 * *ClientErrorSerializer* [(ClientErrorSerializer.java)](serialize/ClientErrorSerializer.java)
-* *Serializer* [(Serializer.java)](serialize/Serializer.java)
+* *JSONSerializable* [(JSONSerializable.java)](serialize/JSONSerializable.java)
+* *JSONSerializer* [(JSONSerializer.java)](serialize/JSONSerializer.java)
 * *TokenSerializer* [(TokenSerializer.java)](serialize/TokenSerializer.java)
 * *UserCredentialsSerializer* [(UserCredentialsSerializer.java)](serialize/UserCredentialsSerializer.java)
 
 ### service [(service)](service)
 
 * *APIService* [(APIService.java)](service/APIService.java)
-* *LoginService* [(LoginService.java)](service/LoginService.java)
 
 ### settings [(settings)](settings)
 
@@ -44,4 +47,3 @@ Chatapp
 
 * *Constants* [(Constants.java)](util/Constants.java)
 * *Logger* [(Logger.java)](util/Logger.java)
-
