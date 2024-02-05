@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     @NonNull
     private boolean userIsAuthenticated() {
-        if (SettingsManager.getInstance().isAuthenticated(this)) {
-            return true;
-        }
-
-        return false;
+        return SettingsManager.getInstance().isAuthenticated(this);
     }
 }
